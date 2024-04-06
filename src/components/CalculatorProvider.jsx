@@ -3,27 +3,29 @@ import { createContext, useContext, useState } from "react";
 const CalculatorContext = createContext()
 
 export const CalculatorProvider = ({ children }) => {
-    const [list, setList] = useState([0])
-    const [result, setResult] = useState('')
+    const [list, setList] = useState([])
 
-    const addNumbers = (n) => {
-        setList([...list, n])
+    // Funciones que pedía el challenge
+    const addNumbers = (n) => setList([...list, n])
+    const sum = (list) => list.length === 0 ? null : list.reduce((a, b) => a + b)
+    const reset = () => setList([])
+
+    // Funciones extra
+    const [digits, setDigits] = useState([])
+    const [addend, setAddend] = useState([])
+
+    const addDigits = (d) => setDigits([...digits, d])// función de actualización, useState ASÍNCRONA
+        
+    const plus = () => {
+        const fullNum = +digits.join('')
+        setAddend(a => [...a, fullNum])
+        setDigits([])
     }
 
-    const sum = (list) => {
-        const resultSum = list.reduce((a, b) => a + b)
-        setResult(resultSum)
-        return result
-    }
-
-    const reset = () => {
-        setList([0])
-        setResult('')
-    }
 
     return (
         <CalculatorContext.Provider
-            value={{ list, addNumbers, result, sum, reset }}>
+            value={{ list, addNumbers, sum, reset, digits, addDigits, addend, plus }}>
             {children}
         </CalculatorContext.Provider>
     )
