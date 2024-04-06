@@ -22,8 +22,3 @@ Cada vez que se pulse un botón aparecerá el número en pantalla. Luego habrá 
 ### BONUS
 
 Añadir estilos para resaltar el número actual seleccionado en la calculadora y para mostrar la lista de números seleccionados de manera clara en la página de resultado.
-
-
-
-
- 
