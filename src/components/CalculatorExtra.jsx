@@ -2,14 +2,14 @@ import { useCalculator } from "./CalculatorProvider"
 import { Link } from "react-router-dom"
 
 function CalculatorExtra() {
-    const { digits, addDigits, addend, plus } = useCalculator()
+    const { digits, addDigits, addend, plus, sum } = useCalculator()
     return (
         <section className='extra'>
             <h2>Calculadora extra</h2>
             <div className='screen'>
                 {digits.join('')}
             </div>
-            <div className='screen'>
+            <div className='screen space'>
                 {addend.join('+')}
             </div>
             <div className="calculator">
@@ -27,7 +27,7 @@ function CalculatorExtra() {
                     <button onClick={() => addDigits('.')}>,</button>
                     <button onClick={plus}>+</button>
                 </div>
-                    <button onClick={plus}>=</button>
+                <button onClick={() => {plus(), sum(addend)}}>=</button>
             </div>
 
             <Link to='/result'>Resultado</Link>

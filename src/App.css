@@ -30,6 +30,10 @@
   height: 30px;
 }
 
+.space {
+  margin-top: 10px;
+}
+
 .calculator {
   margin: 20px;
 }
